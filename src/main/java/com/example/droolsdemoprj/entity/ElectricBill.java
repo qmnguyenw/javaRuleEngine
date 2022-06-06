@@ -1,15 +1,12 @@
 package com.example.droolsdemoprj.entity;
 
-import java.math.BigDecimal;
-
 public class ElectricBill {
     private Integer id;
     private String area;
     private Integer noElectric;
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 
     public ElectricBill(Integer id, String area, Integer noElectric) {
-        super();
         this.id = id;
         this.area = area;
         this.noElectric = noElectric;
@@ -39,11 +36,16 @@ public class ElectricBill {
         this.noElectric = noElectric;
     }
 
-    public BigDecimal getTotalAmount() {
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public void calculateTotalAmount(Double rate) {
+
+        this.totalAmount = this.noElectric * rate;
     }
 }
