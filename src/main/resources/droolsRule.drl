@@ -1,0 +1,84 @@
+import com.example.droolsdemoprj.entity.ElectricBill;
+import java.math.BigDecimal;
+
+rule "Calculate totalAmount EBill Area1 & noElectric < 200"
+    when
+        billObject : ElectricBill(
+            area == "1"
+            && noElectric < 200
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1));
+end;
+
+rule "Calculate totalAmount EBill Area1 & noElectric > 200 & noElectric < 500"
+    when
+        billObject : ElectricBill(
+            area == "1"
+            && noElectric > 200
+            && noElectric < 500
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1.5));
+end;
+
+rule "Calculate totalAmount EBill Area1 & noElectric > 500"
+    when
+        billObject : ElectricBill(
+            area == "1"
+            && noElectric > 500
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 2));
+end;
+
+rule "Calculate totalAmount EBill Area2 & noElectric < 200"
+    when
+        billObject : ElectricBill(
+            area == "2"
+            && noElectric < 200
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 0.8));
+end;
+
+rule "Calculate totalAmount EBill Area2 & noElectric > 200 & noElectric < 1000"
+    when
+        billObject : ElectricBill(
+            area == "2"
+            && noElectric > 200
+            && noElectric < 1000
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1.2));
+end;
+
+rule "Calculate totalAmount EBill Area2 & noElectric > 1000"
+    when
+        billObject : ElectricBill(
+            area == "2"
+            && noElectric > 1000
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1.5));
+end;
+
+rule "Calculate totalAmount EBill Area3 & noElectric < 1000"
+    when
+        billObject : ElectricBill(
+            area == "3"
+            && noElectric < 1000
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1));
+end;
+
+rule "Calculate totalAmount EBill Area3 & noElectric > 1000"
+    when
+        billObject : ElectricBill(
+            area == "3"
+            && noElectric > 1000
+        );
+    then
+        billObject.setTotalAmount(BigDecimal.valueOf(billObject.getNoElectric() * 1.3));
+end;
